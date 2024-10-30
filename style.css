@@ -1,0 +1,293 @@
+* {
+      margin: 10;
+      padding-right: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #151515;
+      flex-direction: column; /* Stack elements vertically */
+    }
+
+    /* Coca-Cola Card Styles */
+    .card {
+      position: relative;
+      width: 350px;
+      height: 350px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.5s;
+      transition-delay: 0.5s;
+      margin-bottom: 40px; /* Space between card and dock */
+    }
+    
+    .card:hover {
+      width: 600px;
+      transition-delay: 0.5s;
+    }
+
+    .card .circle {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card .circle::before {
+      content: "";
+      position: absolute;
+      top: 30;
+      left: 2;
+      right: 2;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      background: #191919;
+      border: 8px solid var(--clr);
+      filter: drop-shadow(0 0 10px var(--clr)) drop-shadow(0 0 60px var(--clr));
+      transition: 0.5s, background 0.5s;
+      transition-delay: 0.75s, 1s;
+    }
+
+    .card:hover .circle::before {
+      transition-delay: 0.5s;
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      background: var(--clr);
+    }
+
+    .card .circle .logo {
+      position: relative;
+      width: 250px;
+      transition: 0.5s;
+      transition-delay: 0.5s;
+    }
+
+    .card:hover .circle .logo {
+      transform: scale(0);
+      transition-delay: 0s;
+    }
+
+    .card .product_img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0) rotate(315deg);
+      height: 300px;
+      transition: 0.5s ease-in-out;
+    }
+
+    .card:hover .product_img {
+      transition-delay: 0.75s;
+      top: 50%;
+      left: 72%;
+      height: 600px;
+      transform: translate(-50%, -50%) scale(1) rotate(360deg);
+    }
+
+    .card .content {
+      position: absolute;
+      width: 50%;
+      left: 20%;
+      padding: 20px 20px 20px 20px;
+      opacity: 0;
+      transition: 0.5s;
+      visibility: hidden;
+    }
+
+    .card:hover .content {
+      transition-delay: 0.75s;
+      opacity: 1;
+      visibility: visible;
+      left: 20px;
+    }
+
+    .card .content h2 {
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 2.5em;
+      line-height: 1em;
+    }
+
+    .card .content p {
+      color: #fff;
+    }
+
+    .card .content a {
+      position: relative;
+      color: #111;
+      background: #fff;
+      padding: 10px 20px;
+      border-radius: 10px;
+      display: inline-block;
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    /* Dock Styles */
+    .dock-icon {
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+    }
+
+    .icon {
+      font-size: 1.5rem;
+      color: white;
+      transition: transform 0.1s ease, color 0.1s ease;
+    }
+
+    .dock-icon:hover .icon {
+      color: rgb(255, 0, 119);
+    }
+
+    .dock-icon:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transform: rotate(3deg) scale(1.1);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+        .card {
+          width: 90%; /* Make the card take most of the screen on smaller devices */
+        }
+  
+        .card .content h2 {
+          font-size: 1.3em; /* Adjust title font size */
+        }
+  
+        .card .content p {
+          font-size: medium; /* Adjust paragraph font size */
+        }
+  
+        .dock-icon {
+          width: 40px; /* Smaller dock icons */
+          height: 40px;
+        }
+      }
+  
+      @media (max-width: 480px) {
+        .card {
+          width: 100%; /* Full width on very small screens */
+        }
+  
+        .card .content h2 {
+          font-size: 1.2em; /* Adjust title font size */
+        }
+  
+        .card .content p {
+          font-size: small; /* Smaller paragraph font size */
+        }
+  
+        .dock-icon {
+          width: 35px; /* Even smaller dock icons */
+          height: 35px;
+        }
+      }
+
+
+      
+    .button {
+      margin-top: 50px;
+      height: auto;
+      background: transparent;
+      padding: 0;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* button styling */
+    .button {
+      --border-right: 6px;
+      --text-stroke-color: rgb(255, 255, 255);
+      --animation-color: #e1ff01;
+      --fs-size: 2em;
+      letter-spacing: 3px;
+      text-decoration: none;
+      font-size: var(--fs-size);
+      font-family: "Arial";
+      position: relative;
+      text-transform: uppercase;
+      color: transparent;
+      -webkit-text-stroke: 1px var(--text-stroke-color);
+    }
+    /* this is the text, when you hover on button */
+    .hover-text {
+      position: absolute;
+      box-sizing: border-box;
+      content: attr(data-text);
+      color: var(--animation-color);
+      width: 0%;
+      inset: 0;
+      border-right: var(--border-right) solid var(--animation-color);
+      overflow: hidden;
+      transition: 0.5s;
+      -webkit-text-stroke: 1px var(--animation-color);
+    }
+    /* hover */
+    .button:hover .hover-text {
+      width: 100%;
+      filter: drop-shadow(0 0 23px var(--animation-color))
+    }
+
+    /*explore*/
+    .button_explore {
+      width: 110px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px;
+      background-color: rgb(255, 0, 102);
+      border-radius: 30px;
+      color: rgb(19, 19, 19);
+      font-weight: 600;
+      border: none;
+      position: relative;
+      cursor: pointer;
+      transition-duration: .2s;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.116);
+      padding-left: 8px;
+      transition-duration: .5s;
+      
+    }
+
+    .svgIcon {
+      height: 25px;
+      transition-duration: 1.5s;
+    }
+
+    .bell path {
+      fill: rgb(19, 19, 19);
+    }
+
+    .button_explore:hover {
+      background-color: rgb(157, 0, 255);
+      transition-duration: .5s;
+    }
+
+    .button_explore:active {
+      transform: scale(0.97);
+      transition-duration: .2s;
+    }
+
+    .button_explore:hover .svgIcon {
+      transform: rotate(250deg);
+      transition-duration: 1.5s;
+    }
